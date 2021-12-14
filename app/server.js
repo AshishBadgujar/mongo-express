@@ -3,7 +3,7 @@ let path = require('path');
 let fs = require('fs');
 let MongoClient = require('mongodb').MongoClient;
 let bodyParser = require('body-parser');
-// const keys = require('./keys');
+const { mongoUsername, mongoPassword, mongoUrl } = require('./keys');
 let app = express();
 
 app.use(bodyParser.urlencoded({
@@ -25,7 +25,7 @@ app.get('/profile-picture', function (req, res) {
 let mongoUrlLocal = "mongodb://localhost:27017";
 
 // use when starting application as docker container
-let mongoUrlDocker = `mongodb://username:password@mongodb-service`;
+let mongoUrlDocker = `mongodb://${mongoUsername}:${mongoPassword}@${mongoUrl}`;
 
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
