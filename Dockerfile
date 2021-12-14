@@ -8,7 +8,7 @@ COPY ./app/package.json /home/app
 RUN npm install
 
 COPY ./app /home/app
-
+EXPOSE 3000
 # no need for /home/app/server.js because of WORKDIR
 CMD ["npm", "start"]
 
